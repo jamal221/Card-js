@@ -1,21 +1,21 @@
 const cartList = document.querySelector(".cart-list");
-let AllPrie=0;
-window.addEventListener("DOMContentLoaded", () => {
-    // alert("hello");
-    const courseItems = Object.keys(localStorage).filter(course=>{
-        if (course.includes("courseList")) {
-            console.log({
-                "item":course
-            })
-          return course
-        }
+let AllPrie = 0;
+// window.addEventListener("DOMContentLoaded", () => {
+  // alert("hello");
+  const courseItems = Object.keys(localStorage).filter(course => {
+    if (course.includes("courseList")) {
+      console.log({
+        "item": course
       })
-      courseItems.forEach((course) => {
-        const itemData = JSON.parse(localStorage.getItem(course));
-        
-        const liElement = document.createElement("li");
-        liElement.className = "align cart-item";
-        liElement.innerHTML = `<div class="cart-item-right">
+      return course
+    }
+  })
+  courseItems.forEach((course) => {
+    const itemData = JSON.parse(localStorage.getItem(course));
+
+    const liElement = document.createElement("li");
+    liElement.className = "align cart-item";
+    liElement.innerHTML = `<div class="cart-item-right">
             <div class="cart-item-right-img">
               <img
                 class="cart-item-img"
@@ -66,14 +66,24 @@ window.addEventListener("DOMContentLoaded", () => {
             </button>
             <p><span>${itemData.price}</span>تومان</p>
             </div>`;
-        cartList.appendChild(liElement);
-        var price=(itemData.price).replace(/,/g,"");
-        AllPrie=AllPrie+(price);
-       
-        // AllPrie=AllPrie+parseInt(price);
-      });  //end for
-      console.log({
-        " price": AllPrie
-      })  
-      
-})
+    cartList.appendChild(liElement);
+    var price = (itemData.price).replace(/,/g, "");
+    // console.log({
+    //   "typeNumber":typeof(price)
+    // })
+    AllPrie = AllPrie + parseInt(price);
+
+    // AllPrie=AllPrie+parseInt(price);
+  });  //end for
+  document.getElementById("TotalPrice").innerHTML=new Intl.NumberFormat().format(AllPrie,);totalPayment
+  document.getElementById("totalPayment").innerHTML=new Intl.NumberFormat().format(AllPrie-0,);
+  // console.log({
+  //   " price": AllPrie
+  // })
+  function ApplyDiscout(){
+    var codeDisc=document.getElementById("disCode").value;
+    console.log({
+      "disCode":codeDisc
+    })
+  }
+// })

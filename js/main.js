@@ -34,14 +34,16 @@ function addCard(btnThisCard){
    
   }
 function clearCard(){
-  console.log({
-    "ProductSelected":localStorage.getItem("ProductSelected")
-  })
-  // localStorage.clear();
-  // document.getElementById("cart-button-number").innerHTML="";
+ 
   localStorage.clear();
+  document.getElementById("cart-button-number").innerHTML="";
+ 
   document.getElementById("cart-button-number").style.display="none";
-  $('#cart-button-number').load('#cart-button-number > *')  
+  $('#cart-button-number').load('#cart-button-number > *');  
+
+  //  console.log({
+  //   "ProductSelected":localStorage.getItem("ProductSelected")
+  // })
 }
 
 function showCardWindowsLoad(){
